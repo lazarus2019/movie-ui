@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet-async";
 import { useEffect } from "react";
 
 function Catalog() {
-  const { category } = useParams();
+  const { category, type } = useParams();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -25,7 +25,7 @@ function Catalog() {
       </PageHeader>
       <div className="container">
         <div className="section mb-3">
-          <MovieGrid category={category} />
+          <MovieGrid category={category} type={type ? type : null} />
         </div>
       </div>
     </>

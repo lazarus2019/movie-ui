@@ -9,6 +9,7 @@ import Modal, { ModalContent } from "../modal/Modal";
 import Button, { OutlineButton } from "../button/Button";
 import tmdbApi, { category, movieType } from "../../api/tmdbApi";
 import apiConfig from "../../api/apiConfig";
+import getImage from "../../utils/getImage";
 
 function HeroSlide() {
   SwiperCore.use([Autoplay]);
@@ -19,7 +20,10 @@ function HeroSlide() {
     const getMovies = async () => {
       const params = { page: 1, language: "en-US" };
       try {
-        const response = await tmdbApi.getMoviesList(movieType.popular, {params});
+        const response = await tmdbApi.getMoviesList(movieType.popular, {
+          params,
+        });
+        console.log(response)
         setMovieItems(response.results.slice(0, 4));
       } catch (error) {
         alert(error);
@@ -36,7 +40,7 @@ function HeroSlide() {
         spaceBetween={0}
         slidesPerView={1}
         loop={true}
-        autoplay={{ delay: 3000 }}
+        autoplay={{ delay: 10000 }}
       >
         {movieItems.map((item, i) => (
           <SwiperSlide key={i}>
@@ -61,8 +65,15 @@ const HeroSlideItem = (props) => {
 
   const item = props.item;
 
-  const background = apiConfig.originalImage(
-    item.backdrop_path ? item.backdrop_path : item.poster_path
+  const background = getImage(
+    item.backdrop_path ?? item.poster_path ?? false,
+    apiConfig.originalImage,
+    true
+  );
+
+  const poster = getImage(
+    item.poster_path ?? item.backdrop_path ?? false,
+    apiConfig.w500Image
   );
 
   const setModalActive = async () => {
@@ -101,7 +112,7 @@ const HeroSlideItem = (props) => {
           </div>
         </div>
         <div className="hero-slide__item__content__poster">
-          <img src={apiConfig.w500Image(item.poster_path)} alt={item.name} />
+          <img src={poster} alt={item.name} />
         </div>
       </div>
     </div>
@@ -115,20 +126,20 @@ const TrailerModal = (props) => {
 
   const onClose = () => {
     iframeRef.current.setAttribute("src", "");
-  }
+  };
 
-    return (
-      <Modal active={false} id={`modal_${item.id}`} onClose={onClose}>
-        <ModalContent onClose={onClose}>
-          <iframe
-            ref={iframeRef}
-            width="100%"
-            height="500px"
-            title="trailer"
-          ></iframe>
-        </ModalContent>
-      </Modal>
-    );
+  return (
+    <Modal active={false} id={`modal_${item.id}`} onClose={onClose}>
+      <ModalContent onClose={onClose}>
+        <iframe
+          ref={iframeRef}
+          width="100%"
+          height="500px"
+          title="trailer"
+        ></iframe>
+      </ModalContent>
+    </Modal>
+  );
 };
 
 export default HeroSlide;

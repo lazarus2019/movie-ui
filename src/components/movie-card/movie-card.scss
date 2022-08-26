@@ -9,6 +9,20 @@
   border-radius: $border-radius;
   margin-bottom: 1rem;
 
+  &__vote{
+    position: absolute;
+    top: 0.6rem;
+    left: 0.8rem;
+
+    &__item{
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 0.2rem .8rem;
+      border-radius: $border-radius;
+      background-color: $body-bg;
+    }
+  }
+
   .btn {
     position: absolute;
     top: 50%;

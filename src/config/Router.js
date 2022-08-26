@@ -11,21 +11,13 @@ function Router() {
         path="/:category/search/:keyword"
         element={<Catalog title="Movies" />}
       />
-      <Route
-        path="/:category/:id"
-        element={<Detail />}
-      />
-      <Route
-        path="/:category"
-        element={<Catalog />}
-      />
-      <Route
-        path="/"
-        element={<Home />}
-      />
+      <Route path="/:category/:id" element={<Detail />} />
+      <Route path="/:category/t/:type" element={<Catalog />} />
+      <Route path="/:category/g/:type" element={<Catalog />} />
+      <Route path="/:category" element={<Catalog />} />
+      <Route path="/" element={<Home />} />
     </Routes>
   );
 }
 
 export default Router;
- 

@@ -2,11 +2,14 @@ import { Link } from "react-router-dom";
 
 import "./footer.scss";
 
-import assets from '../../assets/'
+import assets from "../../assets/";
 
 function Footer() {
   return (
-    <div className="footer" style={{ backgroundImage: `url(${assets.images.footerBg})` }}>
+    <div
+      className="footer"
+      style={{ backgroundImage: `url(${assets.images.footerBg})` }}
+    >
       <div className="footer__content container">
         <div className="footer__content__logo">
           <div className="logo">

@@ -2,8 +2,10 @@ import { useRef, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import tmdbApi from "../../api/tmdbApi";
+import LoadingBox from "../../components/loading-box/LoadingBox";
 
 function VideoList(props) {
+  const [loading, setLoading] = useState(true);
   const { category } = useParams();
   const [videos, setVideos] = useState([]);
 
@@ -13,13 +15,16 @@ function VideoList(props) {
       setVideos(response.results.slice(0, 5));
     };
     getVideos();
+    setLoading(false);
   }, [category, props.id]);
 
   return (
     <>
-      {videos.map((item, i) => (
-        <Video key={i} item={item} />
-      ))}
+      {loading ? (
+        <LoadingBox />
+      ) : (
+        videos.map((item, i) => <Video key={i} item={item} />)
+      )}
     </>
   );
 }

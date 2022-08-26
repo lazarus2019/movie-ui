@@ -5,23 +5,28 @@ import { Link } from "react-router-dom";
 import Button from "../button/Button";
 import apiConfig from "../../api/apiConfig";
 import { category } from "../../api/tmdbApi";
-import assets from "../../assets/";
+import getImage from "../../utils/getImage";
 
 function MovieCard(props) {
   const item = props.item;
 
   const link = "/" + category[props.category] + "/" + item.id;
 
-  let bg;
-  if (item.poster_path || item.backdrop_path) {
-    bg = apiConfig.w500Image(item.poster_path || item.backdrop_path);
-  } else {
-    bg = assets.images.blankBg;
-  }
+  const bg = getImage(
+    item.poster_path ?? item.backdrop_path ?? false,
+    apiConfig.w500Image
+  );
 
   return (
     <Link to={link}>
       <div className="movie-card" style={{ backgroundImage: `url(${bg})` }}>
+        {item.vote_average === 0 ? null : (
+          <div className="movie-card__vote">
+            <div className="movie-card__vote__item">
+              {item.vote_average.toFixed(1)}
+            </div>
+          </div>
+        )}
         <Button>
           <i className="bx bx-play"></i>
         </Button>

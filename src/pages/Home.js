@@ -18,7 +18,7 @@ function Home() {
         <div className="section mb-3">
           <div className="section__header mb-2">
             <h2>Trending Movies</h2>
-            <Link to="/movie">
+            <Link to={`/movie/t/${movieType.popular}`}>
               <OutlineButton className="small">View more</OutlineButton>
             </Link>
           </div>
@@ -28,7 +28,7 @@ function Home() {
         <div className="section mb-3">
           <div className="section__header mb-2">
             <h2>Top Rated Movies</h2>
-            <Link to="/movie">
+            <Link to={`/movie/t/${movieType.top_rated}`}>
               <OutlineButton className="small">View more</OutlineButton>
             </Link>
           </div>
@@ -38,7 +38,7 @@ function Home() {
         <div className="section mb-3">
           <div className="section__header mb-2">
             <h2>Trending TV</h2>
-            <Link to="/tv">
+            <Link to={`/tv/t/${tvType.popular}`}>
               <OutlineButton className="small">View more</OutlineButton>
             </Link>
           </div>
@@ -48,7 +48,7 @@ function Home() {
         <div className="section mb-3">
           <div className="section__header mb-2">
             <h2>Top Rated TV</h2>
-            <Link to="/tv">
+            <Link to={`/tv/t/${tvType.top_rated}`}>
               <OutlineButton className="small">View more</OutlineButton>
             </Link>
           </div>

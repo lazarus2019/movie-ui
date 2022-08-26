@@ -6,9 +6,11 @@ import "./movie-list.scss";
 
 import tmdbApi, { category } from "../../api/tmdbApi";
 import MovieCard from "../movie-card/MovieCard";
+import LoadingBox from "../loading-box/LoadingBox";
 
 const MovieList = (props) => {
   const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getList = async () => {
@@ -27,20 +29,27 @@ const MovieList = (props) => {
         response = await tmdbApi.similar(props.category, props.id);
       }
       setItems(response.results);
+      setLoading(false);
     };
     getList();
   }, [props.category, props.type, props.id]);
 
   return (
-    <div className="movie-list">
-      <Swiper grabCursor={true} spaceBetween={10} slidesPerView={"auto"}>
-        {items.map((item, i) => (
-          <SwiperSlide key={i}>
-            <MovieCard item={item} category={props.category} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
+    <>
+      {loading ? (
+        <LoadingBox />
+      ) : (
+        <div className="movie-list">
+          <Swiper grabCursor={true} spaceBetween={10} slidesPerView={"auto"}>
+            {items.map((item, i) => (
+              <SwiperSlide key={i}>
+                <MovieCard item={item} category={props.category} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      )}
+    </>
   );
 };
 

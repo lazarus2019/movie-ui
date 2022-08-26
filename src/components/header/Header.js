@@ -4,7 +4,6 @@ import { Link, useLocation } from "react-router-dom";
 
 import "./header.scss";
 
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import assets from "../../assets";
 
 const headerNav = [
@@ -49,7 +48,7 @@ function Header() {
     <div ref={headerRef} className="header">
       <div className="header__wrap container">
         <div className="logo">
-          <LazyLoadImage src={assets.images.logo} alt="" />
+          <img src={assets.images.logo} alt="" />
           <Link to="/">tMovies</Link>
         </div>
         <ul className="header__nav">

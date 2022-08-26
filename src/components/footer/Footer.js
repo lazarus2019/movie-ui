@@ -1,4 +1,3 @@
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
 
 import "./footer.scss";
@@ -11,7 +10,7 @@ function Footer() {
       <div className="footer__content container">
         <div className="footer__content__logo">
           <div className="logo">
-            <LazyLoadImage src={assets.images.logo} alt="" />
+            <img src={assets.images.logo} alt="" />
             <Link to="/">tMovies</Link>
           </div>
         </div>

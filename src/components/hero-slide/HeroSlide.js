@@ -9,7 +9,6 @@ import Modal, { ModalContent } from "../modal/Modal";
 import Button, { OutlineButton } from "../button/Button";
 import tmdbApi, { category, movieType } from "../../api/tmdbApi";
 import apiConfig from "../../api/apiConfig";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function HeroSlide() {
   SwiperCore.use([Autoplay]);
@@ -102,7 +101,7 @@ const HeroSlideItem = (props) => {
           </div>
         </div>
         <div className="hero-slide__item__content__poster">
-          <LazyLoadImage src={apiConfig.w500Image(item.poster_path)} alt={item.name} />
+          <img src={apiConfig.w500Image(item.poster_path)} alt={item.name} />
         </div>
       </div>
     </div>

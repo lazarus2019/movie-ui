@@ -1,0 +1,22 @@
+@use '../../scss/' as *;
+
+.rating {
+  display: flex;
+  padding: 0.5rem 0;
+  align-items: center;
+  &__stars {
+    display: flex;
+    &__icon {
+      font-size: 1.4rem;
+      &__active {
+        color: $orange-light-color;
+      }
+    }
+  }
+
+  &__info {
+    font-size: 1em;
+    font-weight: 600;
+    margin-left: 1rem;
+  }
+}

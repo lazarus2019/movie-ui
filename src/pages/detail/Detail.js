@@ -33,7 +33,6 @@ function Detail() {
     const getDetail = async () => {
       const response = await tmdbApi.detail(category, id, { params: {} });
       setItem(response);
-      console.log(response);
       window.scrollTo(0, 0);
     };
     getDetail();

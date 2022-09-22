@@ -1,0 +1,80 @@
+@use '../../scss/' as *;
+
+.movie-card__preview {
+  font-size: 0.8rem;
+  background-color: $grey;
+
+  border-radius: 0.5rem;
+  width: 320px;
+
+  @include tablet {
+    width: 250px;
+  }
+
+  &__header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+
+    &__heading {
+      font-size: 1.2rem;
+    }
+
+    &__quality {
+      padding: 0 4px;
+      height: 16px;
+      line-height: 16px;
+      text-align: center;
+      border-radius: 0.2rem;
+      background-color: $main-color-hover;
+    }
+  }
+
+  &__box {
+    padding: 0 1rem 1rem 1rem;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    background-color: $grey-light;
+
+    & > * ~ * {
+      margin-left: 1.5rem;
+    }
+
+    &__imdb {
+      color: $black;
+      font-weight: 600;
+      padding: 0 8px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      border-radius: 0.2rem;
+      background-color: $yellow-light-color;
+    }
+  }
+
+  &__overview {
+    font-size: 0.9rem;
+    line-height: 1rem;
+    max-height: calc(1.6rem + 1rem); // padding + height of 2 lines
+    color: $txt-color;
+    padding: 0.8rem 0;
+    overflow: hidden;
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    margin-bottom: 0.8rem;
+  }
+
+  &__genres {
+    padding: 0.5rem 0;
+
+    & > p {
+      line-height: 1.2rem;
+    }
+  }
+}
